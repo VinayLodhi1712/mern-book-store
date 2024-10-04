@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 function About() {
   return (
    <div>
-    <h1 className="text-4xl font-bold text-center mt-20 my-8">About Us</h1>
-    <div className='px-4 lg:px-24 my-18 flex flex-col md:flex-row justify-between items-center ' style={{marginTop:"-4px", border:"2px solid #ccc"}}>
+    <h1 className="text-6xl font-bold text-center mt-20 my-8">About Us</h1>
+    <div className='px-4 lg:px-24 my-18 flex flex-col md:flex-row justify-between items-center ' >
       <div className='md:w-1/2'>
         <img src={FavBookimg} alt='' className='rounded md:w-10/12'></img>
       </div>

@@ -4,7 +4,7 @@ import { BiBuoy } from 'react-icons/bi';
 import { FaBlog } from "react-icons/fa6"
 import { Link } from 'react-router-dom'
 import { HiArrowSmRight, HiChartPie, HiInbox, HiOutlineCloudUpload, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';
-import userImg from "../assets/profile.jpg"
+
 import { AuthContext } from '../contects/AuthProvider';
 function SideBar() {
   const { user } = useContext(AuthContext)
