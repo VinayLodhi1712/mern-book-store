@@ -48,7 +48,7 @@ function EditBooks() {
     console.log(bookObj);
   
     //update data to db
-    fetch(`http://localhost:5000/book/${id}`,{
+    fetch(`https://mern-book-store-ou6z.onrender.com/book/${id}`,{
       method:"PATCH",
       headers:{
         "Content-type":"application/json"

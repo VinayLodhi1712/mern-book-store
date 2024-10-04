@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function ManageBook() {
   const [allbooks, setAllbooks] = useState([])
   useEffect(() => {
-    fetch("http://localhost:5000/all-books").then(res => res.json()).then(data => setAllbooks(data))
+    fetch("https://mern-book-store-ou6z.onrender.com/all-books").then(res => res.json()).then(data => setAllbooks(data))
   }, [])
   return (
     <div className='px-4 my-12'>

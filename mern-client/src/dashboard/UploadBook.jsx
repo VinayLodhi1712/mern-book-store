@@ -49,7 +49,7 @@ function UploadBook() {
     console.log(bookObj);
   
     //send data to db
-    fetch("http://localhost:5000/upload-book",{
+    fetch("https://mern-book-store-ou6z.onrender.com/upload-book",{
       method:"POST",
       headers:{
         "Content-type":"application/json"
