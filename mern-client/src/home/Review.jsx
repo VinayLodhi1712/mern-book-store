@@ -1,157 +1,88 @@
-
-import React, { useRef, useState } from 'react';
-// Import Swiper React components
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-import { FaS, FaStar } from 'react-icons/fa6'
-// Import Swiper styles
+import { FaStar } from 'react-icons/fa6';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Avatar } from 'flowbite-react';
-import propic from '../assets/profile.jpg';
-//import './styles.css';
-
-// import required modules
 import { Pagination } from 'swiper/modules';
+
+const reviews = [
+    {
+        name: 'Alice Johnson',
+        role: 'Book Enthusiast',
+        image: 'https://randomuser.me/api/portraits/women/44.jpg',
+        rating: 5,
+        review: 'Amazing collection of books! The delivery was quick, and the quality of the books exceeded my expectations. Highly recommended!',
+    },
+    {
+        name: 'Michael Smith',
+        role: 'Author & Reader',
+        image: 'https://randomuser.me/api/portraits/men/32.jpg',
+        rating: 4,
+        review: 'Great service and an impressive selection of rare books. Would love to see more discounts on bestsellers.',
+    },
+    {
+        name: 'Sophia Martinez',
+        role: 'Literature Student',
+        image: 'https://randomuser.me/api/portraits/women/22.jpg',
+        rating: 5,
+        review: 'Absolutely love the bookstore! The book recommendations are spot-on, and the packaging was excellent.',
+    },
+    {
+        name: 'David Wilson',
+        role: 'Avid Reader',
+        image: 'https://randomuser.me/api/portraits/men/46.jpg',
+        rating: 4,
+        review: 'Good experience overall. The checkout process was smooth, and I received my order on time.',
+    },
+    {
+        name: 'Emily Carter',
+        role: 'Book Collector',
+        image: 'https://randomuser.me/api/portraits/women/12.jpg',
+        rating: 5,
+        review: 'I found a rare book I was searching for, and it was in perfect condition! Thank you!',
+    },
+];
+
 function Review() {
     return (
-        <div className='my-2 px-4 lg:px-24'>
-            <h2 className='text-5xl font-bold text-center mb-10 leading-snug'>Our Customers</h2>
-            <div>
-                <Swiper
-                    slidesPerView={1}
-                    spaceBetween={30}
-                    pagination={{
-                        clickable: true,
-                    }}
-                    breakpoints={{
-                        640: {
-                            slidesPerView: 1,
-                            spaceBetween: 20,
-                        },
-                        768: {
-                            slidesPerView: 2,
-                            spaceBetween: 40,
-                        },
-                        1024: {
-                            slidesPerView: 3,
-                            spaceBetween: 50,
-                        },
-                    }}
-                    modules={[Pagination]}
-                    className="mySwiper"
-                >
-                    <SwiperSlide className='shadow-2xl bg-white py-8 px-4 md:m-5 rounded-lg border'>
-                        <div className='space-y-6'>
-                            <div className='text-amber-500 flex gap-2'>
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
+        <div className='my-10 px-6 lg:px-24 overflow-hidden'>
+            <h2 className='text-4xl font-semibold text-center mb-10 text-gray-800'>What Our Customers Say</h2>
+            <Swiper
+                slidesPerView={1}
+                spaceBetween={20}
+                loop={true}  // Enable infinite scrolling
+                pagination={{ clickable: true }}
+                breakpoints={{
+                    640: { slidesPerView: 1, spaceBetween: 20 },
+                    768: { slidesPerView: 2, spaceBetween: 30 },
+                    1024: { slidesPerView: 3, spaceBetween: 40 },
+                }}
+                modules={[Pagination]}
+                className='mySwiper'
+            >
+                {reviews.map((review, index) => (
+                    <SwiperSlide key={index} className='shadow-lg bg-white py-6 px-5 rounded-xl border border-gray-200'>
+                        <div className='space-y-5 text-gray-700'>
+                            <div className='text-yellow-500 flex gap-1'>
+                                {[...Array(review.rating)].map((_, i) => (
+                                    <FaStar key={i} />
+                                ))}
                             </div>
-
-                            {/* text */}
-                            <div className='mt-7'>
-                                <p className='mb-5'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam quidem iure ea libero eveniet harum perferendis quisquam vitae tempore dolor veniam nesciunt incidunt vel totam, nobis autem enim voluptates! Quibusdam. </p>
-                                <Avatar img={propic} alt="avatar of Jese" rounded className='w-10 mb-4' />
-                                <h5 className='text-lg font-medium'>Mark Ping </h5>
-                                <p className='text-base'>CEO, ABC Company</p>
-
+                            <p className='text-base'>{review.review}</p>
+                            <div className='flex items-center gap-4 mt-4'>
+                                <Avatar img={review.image} alt={`avatar of ${review.name}`} rounded className='w-12 h-12' />
+                                <div>
+                                    <h5 className='text-lg font-medium'>{review.name}</h5>
+                                    <p className='text-sm text-gray-500'>{review.role}</p>
+                                </div>
                             </div>
-                        </div></SwiperSlide>
-                    <SwiperSlide className='shadow-2xl bg-white py-8 px-4 md:m-5 rounded-lg border'>
-                        <div className='space-y-6'>
-                            <div className='text-amber-500 flex gap-2'>
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                            </div>
-
-                            {/* text */}
-                            <div className='mt-7'>
-                                <p className='mb-5'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam quidem iure ea libero eveniet harum perferendis quisquam vitae tempore dolor veniam nesciunt incidunt vel totam, nobis autem enim voluptates! Quibusdam. </p>
-                                <Avatar img={propic} alt="avatar of Jese" rounded className='w-10 mb-4' />
-                                <h5 className='text-lg font-medium'>Mark Ping </h5>
-                                <p className='text-base'>CEO, ABC Company</p>
-
-                            </div>
-                        </div></SwiperSlide>
-                    <SwiperSlide className='shadow-2xl bg-white py-8 px-4 md:m-5 rounded-lg border'>
-                        <div className='space-y-6'>
-                            <div className='text-amber-500 flex gap-2'>
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                            </div>
-
-                            {/* text */}
-                            <div className='mt-7'>
-                                <p className='mb-5'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam quidem iure ea libero eveniet harum perferendis quisquam vitae tempore dolor veniam nesciunt incidunt vel totam, nobis autem enim voluptates! Quibusdam. </p>
-                                <Avatar img={propic} alt="avatar of Jese" rounded className='w-10 mb-4' />
-                                <h5 className='text-lg font-medium'>Mark Ping </h5>
-                                <p className='text-base'>CEO, ABC Company</p>
-
-                            </div>
-                        </div></SwiperSlide>
-                    <SwiperSlide className='shadow-2xl bg-white py-8 px-4 md:m-5 rounded-lg border'>
-                        <div className='space-y-6'>
-                            <div className='text-amber-500 flex gap-2'>
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                            </div>
-
-                            {/* text */}
-                            <div className='mt-7'>
-                                <p className='mb-5'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam quidem iure ea libero eveniet harum perferendis quisquam vitae tempore dolor veniam nesciunt incidunt vel totam, nobis autem enim voluptates! Quibusdam. </p>
-                                <Avatar img={propic} alt="avatar of Jese" rounded className='w-10 mb-4' />
-                                <h5 className='text-lg font-medium'>Mark Ping </h5>
-                                <p className='text-base'>CEO, ABC Company</p>
-
-                            </div>
-                        </div></SwiperSlide>
-                    <SwiperSlide className='shadow-2xl bg-white py-8 px-4 md:m-5 rounded-lg border'>
-                        <div className='space-y-6'>
-                            <div className='text-amber-500 flex gap-2'>
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                            </div>
-
-                            {/* text */}
-                            <div className='mt-7'>
-                                <p className='mb-5'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam quidem iure ea libero eveniet harum perferendis quisquam vitae tempore dolor veniam nesciunt incidunt vel totam, nobis autem enim voluptates! Quibusdam. </p>
-                                <Avatar img={propic} alt="avatar of Jese" rounded className='w-10 mb-4' />
-                                <h5 className='text-lg font-medium'>Mark Ping </h5>
-                                <p className='text-base'>CEO, ABC Company</p>
-
-                            </div>
-                        </div></SwiperSlide>
-                    <SwiperSlide className='shadow-2xl bg-white py-8 px-4 md:m-5 rounded-lg border'>
-                        <div className='space-y-6'>
-                            <div className='text-amber-500 flex gap-2'>
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                            </div>
-
-                            {/* text */}
-                            <div className='mt-7'>
-                                <p className='mb-5'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam quidem iure ea libero eveniet harum perferendis quisquam vitae tempore dolor veniam nesciunt incidunt vel totam, nobis autem enim voluptates! Quibusdam. </p>
-                                <Avatar img={propic} alt="avatar of Jese" rounded className='w-10 mb-4' />
-                                <h5 className='text-lg font-medium'>Mark Ping </h5>
-                                <p className='text-base'>CEO, ABC Company</p>
-
-                            </div>
-                        </div></SwiperSlide>
-                </Swiper>
-            </div>
+                        </div>
+                    </SwiperSlide>
+                ))}
+            </Swiper>
         </div>
-    )
+    );
 }
 
 export default Review;

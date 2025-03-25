@@ -1,6 +1,13 @@
 header, app{
     z-index: 100001!important;
 }
+.swiper-pagination {
+  position: static !important; /* Prevent absolute positioning */
+  margin-top: 1rem; /* Adjust spacing if needed */
+  display: flex;
+  justify-content: center; /* Keep pagination centered */
+}
+
 
 ::-webkit-scrollbar {
     width: 7px;
